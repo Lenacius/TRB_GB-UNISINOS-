@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iterator>
 #include <fstream>
 #include "Produto.h"
 #include "Insumo.h"
@@ -24,7 +25,7 @@ class Confeitaria
         ///METODOS
         Confeitaria(); // CONSTRUTOR
         virtual ~Confeitaria(); // DESTRUTOR
-        void listarProdutos();
+        void listarProdutos(); // FEITO
         void listarInsumos();
         void atualizarProdutos();
         void atualizarInsumos();

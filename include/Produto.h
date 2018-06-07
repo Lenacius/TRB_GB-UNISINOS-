@@ -36,7 +36,12 @@ class Produto
         void setUnidadeMedida(string unidadeMedida);
         void setQuantEstoque(float quantEstoque);
         void setQuantMinEstoque(float quantMinEstoque);
-
+        int getIdProduto();
+        string getNome();
+        float getValor();
+        string getUnidadeMedida();
+        float getQuantEstoque();
+        float getQuantMinEstoque();
 
 };
 
