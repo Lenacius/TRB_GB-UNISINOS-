@@ -1,0 +1,41 @@
+nomeProduto	nomeInsumo	quantidade
+Pão branco	Farinha de trigo	0.45
+Pão branco	Sal	0.03
+Pão branco	Acucar cristal	0.02
+Pão branco	Leite	0.1
+Pão branco	Fermento biologico	0.02
+Pão branco	Manteiga	0.1
+Pao de milho	Farinha de milho	0.27
+Pao de milho	Sal	0.015
+Pao de milho	Acucar cristal	0.01
+Pao de milho	Leite	0.06
+Pao de milho	Fermento biologico	0.015
+Pao de milho	Manteiga	0.06
+Pão integral	Farinha integral	0.27
+Pão integral	Sal	0.015
+Pão integral	Acucar mascavo	0.01
+Pão integral	Leite	0.06
+Pão integral	Fermento biologico	0.015
+Pão integral	Manteiga	0.06
+Bolo neutro	Farinha de trigo	0.45
+Bolo neutro	Sal	0.03
+Bolo neutro	Acucar cristal	0.3
+Bolo neutro	Leite	0.2
+Bolo neutro	Ovo	2
+Bolo neutro	Fermento quimico	0.04
+Bolo neutro	Mateiga	0.1
+Bolo de chocolate	Farinha de trigo	0.4
+Bolo de chocolate	Sal	0.03
+Bolo de chocolate	Acucar cristal	0.3
+Bolo de chocolate	Leite	0.2
+Bolo de chocolate	Leite condensado	1
+Bolo de chocolate	Ovo	2
+Bolo de chocolate	Fermento quimico	0.04
+Bolo de chocolate	Mateiga	0.1
+Bolo de chocolate	Chocolate granulado	0.15
+Bolo de chocolate	Chocolate em po	0.2
+Rosca de polvilho	Polvilho	0.2
+Rosca de polvilho	Sal	0.02
+Rosca de polvilho	Acucar cristal	0.05
+Rosca de polvilho	Ovo	2
+Rosca de polvilho	Leite	0.1
