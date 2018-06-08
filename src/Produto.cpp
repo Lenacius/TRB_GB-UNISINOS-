@@ -11,13 +11,10 @@ Produto::Produto(int idProduto, string nome, float valor, string unidadeMedida, 
     this->quantEstoque = quantEstoque;
     this->quantMinEstoque = quantMinEstoque;
 
+    InsumosProduto *p = new InsumosProduto();
 }
 
-Produto::~Produto()
-{
-    //dtor
-}
-
+Produto::~Produto(){}
 
 void Produto::produzir(){} // FAZER!!!
 void Produto::vender(){} // FAZER!!!
