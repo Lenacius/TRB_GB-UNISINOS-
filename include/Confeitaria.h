@@ -12,8 +12,7 @@
 
 using namespace std;
 
-class Confeitaria
-{
+class Confeitaria{
 
     private:
         ///ATRIBUTOS

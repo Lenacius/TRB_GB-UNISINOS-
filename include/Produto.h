@@ -4,13 +4,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iterator>
 #include <fstream>
 #include "InsumosProduto.h"
 
 using namespace std;
 
-class Produto
-{
+class Produto{
 
     private:
         ///ATRIBUTOS

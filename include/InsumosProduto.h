@@ -2,15 +2,16 @@
 #define INSUMOSPRODUTO_H
 
 
-class InsumosProduto
-{
+class InsumosProduto{
+
+    private:
+        //Insumo* insumo;
+        //float quantidade;
+
     public:
         InsumosProduto();
         virtual ~InsumosProduto();
 
-    protected:
-
-    private:
 };
 
 #endif // INSUMOSPRODUTO_H
