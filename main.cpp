@@ -7,7 +7,8 @@ int main(){
 
     Confeitaria *sonho = new Confeitaria(); // QUANDO CRIADA A VARIÁVEL O CONSTRUTOR JÁ PUXA OS DADOS DO ARQUIVO Produtos.txt
 
-    //sonho->listarProdutos(); // FUNÇÃO PARA CRIAR A LISTA DE PRODUTOS (SEM LISTA DE INSUMOS)
+    //sonho->listarProdutos(); // FUNÇÃO PARA CRIAR A LISTA DE PRODUTOS (SEM LISTA DE INSUMOS DO PRODUTO)
+    //sonho->listarInsumos(); // FUNÇÃO PARA CRIAR A LISTA DE INSUMOS
 
     delete sonho;
     return 0;
