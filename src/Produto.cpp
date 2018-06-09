@@ -1,4 +1,6 @@
-#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Produto.h"
+//#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Produto.h"
+#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\Produto.h"
+
 
 Produto::Produto(){}
 

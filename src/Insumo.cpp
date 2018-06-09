@@ -1,4 +1,5 @@
-#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Insumo.h"
+//#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Insumo.h"
+#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\Insumo.h"
 
 Insumo::Insumo(){}
 

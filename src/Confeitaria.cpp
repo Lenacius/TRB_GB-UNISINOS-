@@ -1,4 +1,6 @@
-#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Confeitaria.h"
+//#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Confeitaria.h"
+#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\Confeitaria.h"
+
 
 Confeitaria::Confeitaria(){
     fstream file;
@@ -115,4 +117,4 @@ void Confeitaria::atualizarProdutos(){}
 
 void Confeitaria::atualizarInsumos(){}
 
-void Confeitaria::venderProdutor(){}
+void Confeitaria::venderProduto(){}
