@@ -3,9 +3,9 @@
 
 Insumo::Insumo(){}
 
-Insumo::Insumo(int idInsumo, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque){
+Insumo::Insumo(int idProduto, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque){
 
-    this->idInsumo = idInsumo;
+    this->idProduto = idProduto;
     this->nome = nome;
     this->valor = valor;
     this->unidadeMedida = unidadeMedida;
@@ -16,16 +16,14 @@ Insumo::Insumo(int idInsumo, string nome, float valor, string unidadeMedida, flo
 
 Insumo::~Insumo(){}
 
-void Insumo::setIdInsumo(int idInsumo){
-
-} // FAZER!!!
+void Insumo::setIdProduto(int idProduto){} // FAZER!!!
 void Insumo::setNome(string nome){} // FAZER!!!
 void Insumo::setValor(float valor){} // FAZER!!!
 void Insumo::setUnidadeMedida(string unidadeMedida){} // FAZER!!!
 void Insumo::setQuantEstoque(float quantEstoque){} // FAZER!!!
 void Insumo::setQuantMinEstoque(float quantMinEstoque){} // FAZER!!!
 
-int Insumo::getIdInsumo(){ return this->idInsumo; }
+int Insumo::getIdProduto(){ return this->idProduto; }
 
 string Insumo::getNome(){ return this->nome; }
 
