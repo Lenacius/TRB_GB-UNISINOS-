@@ -6,6 +6,7 @@ Confeitaria::Confeitaria(){
     fstream file;
 
     int idProduto;
+    int idInsumo;
     string nome;
     float valor;
     string unidadeMedida;
@@ -14,14 +15,13 @@ Confeitaria::Confeitaria(){
 
     string lixo; // VARIAVEL PARA IGNORAR LINHAS E TABULATURAS
 
-    file.open("Produtos.txt", fstream::in); // ABRE O ARQUIVO PARA LEITURA
+    file.open("Produto.txt", fstream::in); // ABRE O ARQUIVO PARA LEITURA
 
     if(file.is_open()){ // VERIFICA SE O ARQUIVO ESTA ABERTO
 
-        getline(file, lixo);
-
         while(!file.eof()){ // ENQUANTO NÃO CHEGAR AO FINAL DO ARQUIVO FICA PEGANDO AS VARIAVEIS
 
+            getline(file, lixo, '\n');
             file >> idProduto;
             //cout << idProduto << '!' << endl;
             getline(file, lixo, '\t');
@@ -47,7 +47,7 @@ Confeitaria::Confeitaria(){
     }
     else cout << "ERRO! FALHA AO ABRIR O ARQUIVO!" << endl;
 
-    file.open("Insumos.txt", fstream::in);
+    file.open("Insumo.txt", fstream::in);
 
     if(file.is_open()){
 
@@ -55,8 +55,8 @@ Confeitaria::Confeitaria(){
 
         while(!file.eof()){
 
-            file >> idProduto;
-            //cout << idProduto << '!' << endl;
+            file >> idInsumo;
+            //cout << idInsumo << '!' << endl;
             getline(file, lixo, '\t');
             getline(file, nome, '\t');
             //cout << nome << '!' << endl;
@@ -70,7 +70,7 @@ Confeitaria::Confeitaria(){
             file >> quantMinEstoque;
             //cout << quantMinEstoque << '!' << endl;
 
-            Insumo *ponteiroInsumo = new Insumo(idProduto, nome, valor, unidadeMedida, quantEstoque, quantMinEstoque); // ARMAZENA AS VARIAVEIS NUM PONTEIRO DA CLASSE PRODUTOS...
+            Insumo *ponteiroInsumo = new Insumo(idInsumo, nome, valor, unidadeMedida, quantEstoque, quantMinEstoque); // ARMAZENA AS VARIAVEIS NUM PONTEIRO DA CLASSE INSUMO...
 
             lstInsumos.push_back(ponteiroInsumo);
         }
@@ -118,3 +118,8 @@ void Confeitaria::atualizarProdutos(){}
 void Confeitaria::atualizarInsumos(){}
 
 void Confeitaria::venderProduto(){}
+
+
+void Confeitaria::consultaInsumo(){} // FAZER DEPOIS DOS SETS DOS INSUMOS!!! JONAS
+
+void consultarProduto(){} // FAZER DEPOIS DOS SETS DOS PRODUTOS!!! JONAS

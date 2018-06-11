@@ -28,7 +28,10 @@ class Confeitaria{
         void listarInsumos();
         void atualizarProdutos();
         void atualizarInsumos();
-        void venderProdutor();
+        void venderProduto();
+
+        void consultarInsumo();
+        void consultarProduto();
 
 };
 
