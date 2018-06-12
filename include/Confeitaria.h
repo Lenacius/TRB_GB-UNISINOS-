@@ -6,6 +6,7 @@
 #include <vector>
 #include <iterator>
 #include <fstream>
+
 #include "Produto.h"
 #include "Insumo.h"
 #include "Venda.h"
@@ -28,7 +29,7 @@ class Confeitaria{
         void listarInsumos();
         void atualizarProdutos();
         void atualizarInsumos();
-        void venderProdutor();
+        void venderProduto();
 
 };
 
