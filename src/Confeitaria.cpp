@@ -1,5 +1,6 @@
 //#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Confeitaria.h"
-#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\Confeitaria.h"
+//#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\Confeitaria.h"
+#include "C:\Users\isamurs\Desktop\TRB_GB\include\Confeitaria.h"
 
 
 Confeitaria::Confeitaria(){
@@ -18,28 +19,33 @@ Confeitaria::Confeitaria(){
 
     if(file.is_open()){ // VERIFICA SE O ARQUIVO ESTA ABERTO
 
-        getline(file, lixo);
+        getline(file, nome); // CAPTURANDO A PRIMEIRA LINHA QUE NÃO POSSUI DADOS IMPORTANTES
 
         while(!file.eof()){ // ENQUANTO NÃO CHEGAR AO FINAL DO ARQUIVO FICA PEGANDO AS VARIAVEIS
 
             file >> idProduto;
             //cout << idProduto << '!' << endl;
-            getline(file, lixo, '\t');
+
+            file.get(); // FUNÇÃO PARA CAPTURAR O \t PARA ENTÃO CAPTAR A VARIAVEL
             getline(file, nome, '\t');
             //cout << nome << '!' << endl;
+
             file >> valor;
             //cout << valor << '!' << endl;
-            getline(file, lixo, '\t');
+
+            file.get();
             getline(file, unidadeMedida, '\t');
             //cout << unidadeMedida << '!' << endl;
+
             file >> quantEstoque;
             //cout << quantEstoque << '!' << endl;
+
             file >> quantMinEstoque;
             //cout << quantMinEstoque << '!' << endl;
 
             Produto *ponteiroProduto = new Produto(idProduto, nome, valor, unidadeMedida, quantEstoque, quantMinEstoque); // ARMAZENA AS VARIAVEIS NUM PONTEIRO DA CLASSE PRODUTOS...
 
-            lstProdutos.push_back(ponteiroProduto); // ...PARA INTRODUZI-LOS NO FINAL DO VECTOR lstProdutos
+            this->lstProdutos.push_back(ponteiroProduto); // ...PARA INTRODUZI-LOS NO FINAL DO VECTOR lstProdutos
         }
 
         file.close();
@@ -51,22 +57,27 @@ Confeitaria::Confeitaria(){
 
     if(file.is_open()){
 
-        getline(file, lixo);
+        getline(file, nome);
 
         while(!file.eof()){
 
             file >> idProduto;
             //cout << idProduto << '!' << endl;
-            getline(file, lixo, '\t');
+
+            file.get();
             getline(file, nome, '\t');
             //cout << nome << '!' << endl;
+
             file >> valor;
             //cout << valor << '!' << endl;
-            getline(file, lixo, '\t');
+
+            file.get();
             getline(file, unidadeMedida, '\t');
             //cout << unidadeMedida << '!' << endl;
+
             file >> quantEstoque;
             //cout << quantEstoque << '!' << endl;
+
             file >> quantMinEstoque;
             //cout << quantMinEstoque << '!' << endl;
 
@@ -84,7 +95,9 @@ Confeitaria::Confeitaria(){
 
 Confeitaria::~Confeitaria(){}
 
-void Confeitaria::listarProdutos(){
+void Confeitaria::listarProdutos(){ // FUNÇÃO PARA CRIAR A LISTA DE PRODUTOS (SEM LISTA DE INSUMOS DO PRODUTO)
+
+    cout << "IdProduto" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "QuantMinEstoque" << endl;
 
     for(vector<Produto*>::iterator it = lstProdutos.begin(); it != lstProdutos.end(); it++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
         cout << (*it)->getIdProduto();
@@ -99,7 +112,9 @@ void Confeitaria::listarProdutos(){
 
 ///A FAZER!!!!!
 
-void Confeitaria::listarInsumos(){
+void Confeitaria::listarInsumos(){ // FUNÇÃO PARA CRIAR A LISTA DE INSUMOS
+
+    cout << "IdInsumo" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "quantMinEstoque" << endl;
 
     for(vector<Insumo*>::iterator it = lstInsumos.begin(); it != lstInsumos.end(); it++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
         cout << (*it)->getIdProduto();
