@@ -6,6 +6,7 @@
 #include <vector>
 #include <iterator>
 #include <fstream>
+
 #include "InsumosProduto.h"
 
 using namespace std;
@@ -13,7 +14,7 @@ using namespace std;
 class Produto{
 
     private:
-        ///ATRIBUTOS
+        /// ATRIBUTOS
         int idProduto;
         string nome;
         float valor;
@@ -23,25 +24,33 @@ class Produto{
         vector<InsumosProduto*> lstInsumos;
 
     public:
-        ///METODOS
+        /// CONSTRUTOR
         Produto();
         Produto(int idProduto, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque);
+
+        /// DESTRUTOR
         virtual ~Produto();
-        void produzir();
-        void vender();
-        ///SETTERS_&_GETTERS
-        void setIdProduto(int idProduto);
-        void setNome(string nome);
-        void setValor(float valor);
-        void setUnidadeMedida(string unidadeMedida);
-        void setQuantEstoque(float quantEstoque);
-        void setQuantMinEstoque(float quantMinEstoque);
+
+        /// SETTERS_&_GETTERS
         int getIdProduto();
         string getNome();
         float getValor();
         string getUnidadeMedida();
         float getQuantEstoque();
         float getQuantMinEstoque();
+
+        void setIdProduto(int idProduto);
+        void setNome(string nome);
+        void setValor(float valor);
+        void setUnidadeMedida(string unidadeMedida);
+        void setQuantEstoque(float quantEstoque);
+        void setQuantMinEstoque(float quantMinEstoque);
+
+        /// MÉTODOS
+        void leInsumosProduto(Insumo *insumo, float quantidade);
+        void listaInsumos();
+        void produzir();
+        void vender();
 
 };
 

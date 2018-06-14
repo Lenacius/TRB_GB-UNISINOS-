@@ -1,17 +1,36 @@
 #ifndef INSUMOSPRODUTO_H
 #define INSUMOSPRODUTO_H
 
-#include "Insumo.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <iterator>
+#include <fstream>
+
+#include <Insumo.h>
+
+using namespace std;
 
 class InsumosProduto{
 
     private:
-        Insumo* insumo;
+        /// ATRIBUTOS
+        Insumo *insumo;
         float quantidade;
 
     public:
+        /// CONSTRUTOR
         InsumosProduto();
+        InsumosProduto(Insumo *insumo, float quantidade);
+
+        /// DESTRUTOR
         virtual ~InsumosProduto();
+
+        /// SETTERS_&_GETTERS
+        void setQuantidade(float quantidade);
+
+        float getQuantidade();
+        string getNomeInsumo();
 
 };
 
