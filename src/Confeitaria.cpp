@@ -173,5 +173,37 @@ void Confeitaria::listarInsumos(){
         cout << '\t' << (*itI)->getQuantEstoque();
         cout << '\t' << (*itI)->getQuantMinEstoque() << endl;
     }
+}
 
+void Confeitaria::consultaInsumo(int idEscolhido){
+    Insumo insumoEscolhido;
+
+    for(vector<Insumo*>::iterator it = lstInsumos.begin(); it != lstInsumos.end(); it++){
+        if(idEscolhido == (*it)->getIdProduto()){
+            cout << "ID: " << "\t\t\t" <<(*it)->getIdProduto() << '\n'
+            << "Nome: " << "\t\t\t" <<(*it)->getNome() << '\n'
+            << "Valor: " << "\t\t\t" << (*it)->getValor() << '\n'
+            << "UnidadeMedida: " << "\t\t" << (*it)->getUnidadeMedida() << '\n'
+            << "QuantEstoque: " << "\t\t" << (*it)->getQuantEstoque() << '\n'
+            << "quantMinEstoque: " << "\t" << (*it)->getQuantMinEstoque() << endl;
+        }
+    }
+}
+
+void Confeitaria::consultaInsumo(string nomeEscolhido){
+    Insumo insumoEscolhido;
+
+    /*cout << "\nDigite o nome do insumo: ";
+    cin >> nomeEscolhido;*/
+
+    for(vector<Insumo*>::iterator it = lstInsumos.begin(); it != lstInsumos.end(); it++){
+        if(nomeEscolhido == (*it)->getNome()){
+            cout << "ID: " << "\t\t\t" <<(*it)->getIdProduto() << '\n'
+            << "Nome: " << "\t\t\t" <<(*it)->getNome() << '\n'
+            << "Valor: " << "\t\t\t" << (*it)->getValor() << '\n'
+            << "UnidadeMedida: " << "\t\t" << (*it)->getUnidadeMedida() << '\n'
+            << "QuantEstoque: " << "\t\t" << (*it)->getQuantEstoque() << '\n'
+            << "quantMinEstoque: " << "\t" << (*it)->getQuantMinEstoque() << endl;
+        }
+    }
 }

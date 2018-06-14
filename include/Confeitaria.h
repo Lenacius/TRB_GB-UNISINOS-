@@ -31,6 +31,8 @@ class Confeitaria{
         void atualizarInsumos();
         void venderProduto();
 
+        void consultaInsumo();
+
 };
 
 #endif // CONFEITARIA_H
