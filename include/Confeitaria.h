@@ -7,9 +7,12 @@
 #include <iterator>
 #include <fstream>
 
-#include "Produto.h"
-#include "Insumo.h"
-#include "Venda.h"
+//#include "Produto.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGB\TrabalhoGB\include\Produto.h"
+//#include "Insumo.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGB\TrabalhoGB\include\Insumo.h"
+//#include "Venda.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGB\TrabalhoGB\include\Venda.h"
 
 using namespace std;
 
@@ -31,7 +34,8 @@ class Confeitaria{
         void atualizarInsumos();
         void venderProduto();
 
-        void consultaInsumo();
+        void consultaInsumo(int idEscolha);
+        void consultaInsumo(string nomeEscolhido);
 
 };
 
