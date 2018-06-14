@@ -1,11 +1,20 @@
-//#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\InsumosProduto.h"
-//#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\InsumosProduto.h"
-#include "C:\Users\isamurs\Desktop\TRB_GB\include\InsumosProduto.h"
+#include "InsumosProduto.h"
 
+/// CONSTRUTOR
 InsumosProduto::InsumosProduto(){}
 
+InsumosProduto::InsumosProduto(Insumo *insumo, float quantidade){
 
-InsumosProduto::~InsumosProduto()
-{
-    //dtor
+    this->insumo = insumo;
+    this->quantidade = quantidade;
+
 }
+
+/// DESTRUTOR
+InsumosProduto::~InsumosProduto(){}
+
+/// SETTERS_&_GETTERS
+void InsumosProduto::setQuantidade(float quantidade){ this->quantidade = quantidade; }
+
+float InsumosProduto::getQuantidade(){ return this->quantidade; }
+string InsumosProduto::getNomeInsumo(){ return this->insumo->getNome(); }

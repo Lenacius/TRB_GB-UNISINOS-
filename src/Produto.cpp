@@ -1,13 +1,9 @@
-//#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Produto.h"
-//#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\Produto.h"
-#include "C:\Users\isamurs\Desktop\TRB_GB\include\Produto.h"
+#include "Produto.h"
 
+/// CONSTRUTOR
 Produto::Produto(){}
 
 Produto::Produto(int idProduto, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque){
-    fstream file;
-    string nomeInsumo;
-    float quantidade;
 
     this->idProduto = idProduto;
     this->nome = nome;
@@ -16,55 +12,45 @@ Produto::Produto(int idProduto, string nome, float valor, string unidadeMedida, 
     this->quantEstoque = quantEstoque;
     this->quantMinEstoque = quantMinEstoque;
 
-    file.open("InsumosProduto.txt", fstream::in);
+}
 
-    if(file.is_open()){
+/// DESTRUTOR
+Produto::~Produto(){}
 
-        getline(file, nome); // CAPTURANDO A PRIMEIRA LINHA QUE NÃO POSSUI DADOS IMPORTANTES
+/// SETTERS_&_GETTERS
+void Produto::setIdProduto(int idProduto){ this->idProduto = idProduto; }
+void Produto::setNome(string nome){ this->nome = nome; }
+void Produto::setValor(float valor){ this->valor = valor; }
+void Produto::setUnidadeMedida(string unidadeMedida){ this->unidadeMedida = unidadeMedida; }
+void Produto::setQuantEstoque(float quantEstoque){ this->quantEstoque = quantEstoque; }
+void Produto::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = quantMinEstoque; }
 
-        while(!file.eof()){ // ENQUANTO NÃO CHEGAR AO FINAL DO ARQUIVO
+int Produto::getIdProduto(){ return this->idProduto; }
+string Produto::getNome(){ return this->nome; }
+float Produto::getValor(){ return this->valor; }
+string Produto::getUnidadeMedida(){ return this->unidadeMedida; }
+float Produto::getQuantEstoque(){ return this->quantEstoque; }
+float Produto::getQuantMinEstoque(){ return this->quantMinEstoque; }
 
-            getline(file, nome, '\t');
-            if(nome == this->nome){ // VERIFICA SE O NOME DO PRODUTO É O MESMO QUE ESTÁ LISTADO NO ARQUIVO InsumosProduto.txt
+/// MÉTODOS
+void Produto::leInsumosProduto(Insumo *insumo, float quantidade){
 
-                file.get(); // FUNÇÃO PARA CAPTURAR O \t PARA ENTÃO CAPTAR A VARIAVEL
-                getline(file, nomeInsumo, '\t');
-                //cout << nomeInsumo << '!' << endl;
+    InsumosProduto *ponteiroInsumosProduto = new InsumosProduto(insumo, quantidade);
 
-                file >> quantidade;
-
-            }
-            else getline(file, nome); // CAPTURANDO INSUMOS DE OUTROS PRODUTOS PARA NÃO ENTRAREM NA LISTA DO PRODUTO X;
-
-        }
-
-        file.close();
-
-    }
-    else cout << "ERRO! FALHA AO ABRIR O ARQUIVO!";
-
+    this->lstInsumos.push_back(ponteiroInsumosProduto);
 
 }
 
-Produto::~Produto(){}
+void Produto::listaInsumos(){
 
-void Produto::produzir(){} // FAZER!!!
-void Produto::vender(){} // FAZER!!!
-void Produto::setIdProduto(int idProduto){} // FAZER!!!
-void Produto::setNome(string nome){} // FAZER!!!
-void Produto::setValor(float valor){} // FAZER!!!
-void Produto::setUnidadeMedida(string unidadeMedida){} // FAZER!!!
-void Produto::setQuantEstoque(float quantEstoque){} // FAZER!!!
-void Produto::setQuantMinEstoque(float quantMinEstoque){} // FAZER!!!
+    for(vector<InsumosProduto*>::iterator itIP = this->lstInsumos.begin(); itIP != this->lstInsumos.end(); itIP++){
 
-int Produto::getIdProduto(){ return this->idProduto; }
+        cout << "---" << (*itIP)->getNomeInsumo() << '\t';
+        cout << (*itIP)->getQuantidade() << endl;
 
-string Produto::getNome(){ return this->nome; }
+    }
 
-float Produto::getValor(){ return this->valor; }
+}
 
-string Produto::getUnidadeMedida(){ return this->unidadeMedida; }
-
-float Produto::getQuantEstoque(){ return this->quantEstoque; }
-
-float Produto::getQuantMinEstoque(){ return this->quantMinEstoque; }
+void Produto::produzir(){}
+void Produto::vender(){}
