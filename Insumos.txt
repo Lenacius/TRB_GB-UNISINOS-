@@ -11,6 +11,6 @@ idInsumo	nome	valor	unidadeMedida	quantEstoque	quantMinEstoque
 10	Ovo	4.41	dz	9.00	20.00
 11	Fermento quimico	18.48	kg	2.83	2.50
 12	Fermento biologico	19.32	kg	2.37	3.50
-13	Mateiga	32.78	kg	7.00	5.00
+13	Manteiga	32.78	kg	7.00	5.00
 14	Chocolate granulado	28.47	kg	4.16	3.50
 15	Chocolateempo	41.34	kg	2.60	4.00
