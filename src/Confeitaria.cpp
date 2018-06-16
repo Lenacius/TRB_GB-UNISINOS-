@@ -1,4 +1,6 @@
-#include "Confeitaria.h"
+//#include "Confeitaria.h"
+//#include "C:\Users\JonasMelo\Desktop\TrabalhoGB\include\Confeitaria.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGBa\include\Confeitaria.h"
 
 /// CONSTRUTOR
 Confeitaria::Confeitaria(){
@@ -136,7 +138,7 @@ Confeitaria::Confeitaria(){
             file.close();
 
         }
-        else cout << "ERRO! FALHA AO ABIR O ARQUIVO!" << endl;
+        else cout << "ERRO! FALHA AO ABRIR O ARQUIVO!" << endl;
 
     }
 
@@ -166,7 +168,7 @@ void Confeitaria::listarInsumos(){
     cout << "IdInsumo" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "quantMinEstoque" << endl;
 
     for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE INSUMOS
-        cout << (*itI)->getIdInsumo();
+        cout << (*itI)->getIdProduto();
         cout << '\t' << (*itI)->getNome();
         cout << '\t' << (*itI)->getValor();
         cout << '\t' << (*itI)->getUnidadeMedida();
@@ -175,8 +177,45 @@ void Confeitaria::listarInsumos(){
     }
 }
 
+void Confeitaria::consultaProduto(int idEscolhido){
+
+        for(vector<Produto*>::iterator it = lstProdutos.begin(); it != lstProdutos.end(); it++){
+            if(idEscolhido == (*it)->getIdProduto()){
+                cout << "ID: " << "\t\t\t" <<(*it)->getIdProduto() << '\n'
+                << "Nome: " << "\t\t\t" <<(*it)->getNome() << '\n'
+                << "Valor: " << "\t\t\t" << (*it)->getValor() << '\n'
+                << "UnidadeMedida: " << "\t\t" << (*it)->getUnidadeMedida() << '\n'
+                << "QuantEstoque: " << "\t\t" << (*it)->getQuantEstoque() << '\n'
+                << "quantMinEstoque: " << "\t" << (*it)->getQuantMinEstoque() << endl;
+                cout << endl << "Insumos necessarios para produzi-lo:" << endl;
+                (*it)->listaInsumos();
+                cout << endl;
+                Insumo *insumo;
+                (*it)->leInsumosProduto(insumo, 1.0); // NÃO CONSEGUI UTILIZAR ESSE MÉTODO
+            }
+        }
+}
+
+void Confeitaria::consultaProduto(string nomeEscolhido){
+
+    for(vector<Produto*>::iterator it = lstProdutos.begin(); it != lstProdutos.end(); it++){
+            if(nomeEscolhido == (*it)->getNome()){
+            cout << "ID: " << "\t\t\t" <<(*it)->getIdProduto() << '\n'
+            << "Nome: " << "\t\t\t" <<(*it)->getNome() << '\n'
+            << "Valor: " << "\t\t\t" << (*it)->getValor() << '\n'
+            << "UnidadeMedida: " << "\t\t" << (*it)->getUnidadeMedida() << '\n'
+            << "QuantEstoque: " << "\t\t" << (*it)->getQuantEstoque() << '\n'
+            << "quantMinEstoque: " << "\t" << (*it)->getQuantMinEstoque() << endl;
+            cout << endl << "Insumos necessarios para produzi-lo:" << endl;
+            (*it)->listaInsumos();
+            cout << endl;
+            Insumo *insumo;
+            (*it)->leInsumosProduto(insumo, 1.0); // NÃO CONSEGUI UTILIZAR ESSE MÉTODO
+        }
+    }
+}
+
 void Confeitaria::consultaInsumo(int idEscolhido){
-    Insumo insumoEscolhido;
 
     for(vector<Insumo*>::iterator it = lstInsumos.begin(); it != lstInsumos.end(); it++){
         if(idEscolhido == (*it)->getIdProduto()){
@@ -191,10 +230,6 @@ void Confeitaria::consultaInsumo(int idEscolhido){
 }
 
 void Confeitaria::consultaInsumo(string nomeEscolhido){
-    Insumo insumoEscolhido;
-
-    /*cout << "\nDigite o nome do insumo: ";
-    cin >> nomeEscolhido;*/
 
     for(vector<Insumo*>::iterator it = lstInsumos.begin(); it != lstInsumos.end(); it++){
         if(nomeEscolhido == (*it)->getNome()){
