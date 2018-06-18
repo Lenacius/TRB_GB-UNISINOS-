@@ -27,10 +27,11 @@ class InsumosProduto{
         virtual ~InsumosProduto();
 
         /// SETTERS_&_GETTERS
-        void setQuantidade(float quantidade);
-
         float getQuantidade();
         string getNomeInsumo();
+
+        void setQuantidade(float quantidade);
+
 
 };
 

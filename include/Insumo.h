@@ -12,8 +12,8 @@ using namespace std;
 class Insumo{
 
     private:
-        ///ATRIBUTOS
-        int idProduto;
+        /// ATRIBUTOS
+        int idInsumo;
         string nome;
         float valor;
         string unidadeMedida;
@@ -21,26 +21,31 @@ class Insumo{
         float quantMinEstoque;
 
     public:
-        ///METODOS
+        /// CONSTRUTOR
         Insumo();
-        Insumo(int idProduto, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque);
+        Insumo(int idInsumo, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque);
+
+        /// DESTRUTOR
         virtual ~Insumo();
-        void inserirEstoque();
-        void removerEstoque();
-        ///SETTERS_&_GETTERS
-        void setIdProduto(int idProduto);
-        void setNome(string nome);
-        void setValor(float valor);
-        void setUnidadeMedida(string unidadeMedida);
-        void setQuantEstoque(float quantEstoque);
-        void setQuantMinEstoque(float quantMinEstoque);
-        int getIdProduto();
+
+        /// SETTERS_&_GETTERS
+        int getIdInsumo();
         string getNome();
         float getValor();
         string getUnidadeMedida();
         float getQuantEstoque();
         float getQuantMinEstoque();
 
+        void setIdInsumo(int idInsumo);
+        void setNome(string nome);
+        void setValor(float valor);
+        void setUnidadeMedida(string unidadeMedida);
+        void setQuantEstoque(float quantEstoque);
+        void setQuantMinEstoque(float quantMinEstoque);
+
+        /// MÉTODOS
+        void inserirEstoque();
+        void removerEstoque();
 };
 
 #endif // INSUMO_H

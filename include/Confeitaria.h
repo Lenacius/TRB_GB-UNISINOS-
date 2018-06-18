@@ -8,39 +8,35 @@
 #include <fstream>
 
 #include "Produto.h"
-//#include "C:\Users\JonasMelo\Desktop\TrabalhoGB\include\Produto.h"
 #include "Insumo.h"
-//#include "C:\Users\JonasMelo\Desktop\TrabalhoGB\include\Insumo.h"
-#include "Venda.h"
-//#include "C:\Users\JonasMelo\Desktop\TrabalhoGB\include\Venda.h"
+//#include "Venda.h"
 
 using namespace std;
 
 class Confeitaria{
 
     private:
-        ///ATRIBUTOS
+        /// ATRIBUTOS
         vector<Produto*> lstProdutos;
         vector<Insumo*> lstInsumos;
-        vector<Venda*> lstVendas;
+        //vector<Venda*> lstVendas;
 
     public:
-        ///METODOS
-        Confeitaria(); // CONSTRUTOR
-        virtual ~Confeitaria(); // DESTRUTOR
-        void listarProdutos(); // FEITO
-        void listarInsumos();
-        void atualizarProdutos();
-        void atualizarInsumos();
-        void venderProduto();
+        /// CONSTRUTOR
+        Confeitaria();
 
-        void consultaProduto(int idEscolha);
+        /// DESTRUTOR
+        virtual ~Confeitaria();
+
+        /// MÉTODOS
+        void consultaProduto(int idEscolhido);
         void consultaProduto(string nomeEscolhido);
-        void consultaInsumo(int idEscolha);
+
+        void consultaInsumo(int idEscolhido);
         void consultaInsumo(string nomeEscolhido);
 
-
-
+        void listarProdutos();
+        void listarInsumos();
 
 };
 
