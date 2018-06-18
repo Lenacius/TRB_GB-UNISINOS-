@@ -127,7 +127,7 @@ Confeitaria::~Confeitaria(){}
 /// MÉTODOS
 void Confeitaria::consultaProduto(int idEscolhido){
 
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){
+    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
 
         if(idEscolhido == (*itP)->getIdProduto()){
 
@@ -147,7 +147,7 @@ void Confeitaria::consultaProduto(int idEscolhido){
 }
 void Confeitaria::consultaProduto(string nomeEscolhido){
 
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){
+    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
 
         if(nomeEscolhido == (*itP)->getNome()){
 
@@ -168,7 +168,7 @@ void Confeitaria::consultaProduto(string nomeEscolhido){
 
 void Confeitaria::consultaInsumo(int idEscolhido){
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){
+    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
 
         if(idEscolhido == (*itI)->getIdInsumo()){
 
@@ -186,7 +186,7 @@ void Confeitaria::consultaInsumo(int idEscolhido){
 }
 void Confeitaria::consultaInsumo(string nomeEscolhido){
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){
+    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
 
         if(nomeEscolhido == (*itI)->getNome()){
 
