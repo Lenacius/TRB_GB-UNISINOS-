@@ -1,12 +1,11 @@
-//#include "C:\Users\lolpa\Desktop\C++Projects\TRB_GB\include\Insumo.h"
-//#include "C:\Users\jonas\Documents\GitHub\TRB_GB-UNISINOS-\include\Insumo.h"
-#include "C:\Users\isamurs\Desktop\TRB_GB\include\Insumo.h"
+#include "Insumo.h"
 
+/// CONSTRUTOR
 Insumo::Insumo(){}
 
-Insumo::Insumo(int idProduto, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque){
+Insumo::Insumo(int idInsumo, string nome, float valor, string unidadeMedida, float quantEstoque, float quantMinEstoque){
 
-    this->idProduto = idProduto;
+    this->idInsumo = idInsumo;
     this->nome = nome;
     this->valor = valor;
     this->unidadeMedida = unidadeMedida;
@@ -15,23 +14,24 @@ Insumo::Insumo(int idProduto, string nome, float valor, string unidadeMedida, fl
 
 }
 
+/// DESTRUTOR
 Insumo::~Insumo(){}
 
-void Insumo::setIdProduto(int idProduto){} // FAZER!!!
-void Insumo::setNome(string nome){} // FAZER!!!
-void Insumo::setValor(float valor){} // FAZER!!!
-void Insumo::setUnidadeMedida(string unidadeMedida){} // FAZER!!!
-void Insumo::setQuantEstoque(float quantEstoque){} // FAZER!!!
-void Insumo::setQuantMinEstoque(float quantMinEstoque){} // FAZER!!!
-
-int Insumo::getIdProduto(){ return this->idProduto; }
-
+/// SETTERS_&_GETTERS
+int Insumo::getIdInsumo(){ return this->idInsumo; }
 string Insumo::getNome(){ return this->nome; }
-
 float Insumo::getValor(){ return this->valor; }
-
 string Insumo::getUnidadeMedida(){ return this->unidadeMedida; }
-
 float Insumo::getQuantEstoque(){ return this->quantEstoque; }
-
 float Insumo::getQuantMinEstoque(){ return this->quantMinEstoque; }
+
+void Insumo::setIdInsumo(int idInsumo){ this->idInsumo = idInsumo; }
+void Insumo::setNome(string nome){ this->nome = nome; }
+void Insumo::setValor(float valor){ this->valor = valor; }
+void Insumo::setUnidadeMedida(string unidadeMedida){ this->unidadeMedida = unidadeMedida; }
+void Insumo::setQuantEstoque(float quantEstoque){ this->quantEstoque = quantEstoque; }
+void Insumo::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = quantMinEstoque; }
+
+/// MÉTODOS
+void Insumo::inserirEstoque(){}
+void Insumo::removerEstoque(){}

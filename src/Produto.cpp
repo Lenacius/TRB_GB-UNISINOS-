@@ -18,19 +18,19 @@ Produto::Produto(int idProduto, string nome, float valor, string unidadeMedida, 
 Produto::~Produto(){}
 
 /// SETTERS_&_GETTERS
-void Produto::setIdProduto(int idProduto){ this->idProduto = idProduto; }
-void Produto::setNome(string nome){ this->nome = nome; }
-void Produto::setValor(float valor){ this->valor = valor; }
-void Produto::setUnidadeMedida(string unidadeMedida){ this->unidadeMedida = unidadeMedida; }
-void Produto::setQuantEstoque(float quantEstoque){ this->quantEstoque = quantEstoque; }
-void Produto::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = quantMinEstoque; }
-
 int Produto::getIdProduto(){ return this->idProduto; }
 string Produto::getNome(){ return this->nome; }
 float Produto::getValor(){ return this->valor; }
 string Produto::getUnidadeMedida(){ return this->unidadeMedida; }
 float Produto::getQuantEstoque(){ return this->quantEstoque; }
 float Produto::getQuantMinEstoque(){ return this->quantMinEstoque; }
+
+void Produto::setIdProduto(int idProduto){ this->idProduto = idProduto; }
+void Produto::setNome(string nome){ this->nome = nome; }
+void Produto::setValor(float valor){ this->valor = valor; }
+void Produto::setUnidadeMedida(string unidadeMedida){ this->unidadeMedida = unidadeMedida; }
+void Produto::setQuantEstoque(float quantEstoque){ this->quantEstoque = quantEstoque; }
+void Produto::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = quantMinEstoque; }
 
 /// MÉTODOS
 void Produto::leInsumosProduto(Insumo *insumo, float quantidade){
@@ -53,4 +53,5 @@ void Produto::listaInsumos(){
 }
 
 void Produto::produzir(){}
+
 void Produto::vender(){}

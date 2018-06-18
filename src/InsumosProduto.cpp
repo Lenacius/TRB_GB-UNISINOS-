@@ -14,7 +14,7 @@ InsumosProduto::InsumosProduto(Insumo *insumo, float quantidade){
 InsumosProduto::~InsumosProduto(){}
 
 /// SETTERS_&_GETTERS
-void InsumosProduto::setQuantidade(float quantidade){ this->quantidade = quantidade; }
-
 float InsumosProduto::getQuantidade(){ return this->quantidade; }
 string InsumosProduto::getNomeInsumo(){ return this->insumo->getNome(); }
+
+void InsumosProduto::setQuantidade(float quantidade){ this->quantidade = quantidade; }
