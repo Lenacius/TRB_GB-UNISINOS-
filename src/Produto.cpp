@@ -33,7 +33,7 @@ void Produto::setQuantEstoque(float quantEstoque){ this->quantEstoque = quantEst
 void Produto::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = quantMinEstoque; }
 
 /// MÉTODOS
-void Produto::leInsumosProduto(Insumo *insumo, float quantidade){
+void Produto::leInsumosProduto(Insumo *insumo, float quantidade){ // FUNÇÃO PARA ADICIONAR UM INSUMO A LISTA DE INSUMOS NECESSÁRIOS PARA O PRODUTO
 
     InsumosProduto *ponteiroInsumosProduto = new InsumosProduto(insumo, quantidade);
 
@@ -43,7 +43,7 @@ void Produto::leInsumosProduto(Insumo *insumo, float quantidade){
 
 void Produto::listaInsumos(){
 
-    for(vector<InsumosProduto*>::iterator itIP = this->lstInsumos.begin(); itIP != this->lstInsumos.end(); itIP++){
+    for(vector<InsumosProduto*>::iterator itIP = this->lstInsumos.begin(); itIP != this->lstInsumos.end(); itIP++){ // LAÇO PARA LISTAR OS INSUMOS DE UM PRODUTO
 
         cout << "---" << (*itIP)->getNomeInsumo() << '\t';
         cout << (*itIP)->getQuantidade() << endl;
