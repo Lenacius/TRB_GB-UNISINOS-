@@ -7,7 +7,7 @@
 #include <iterator>
 #include <fstream>
 
-#include <Insumo.h>
+#include "C:\Users\jonas\Desktop\TrabalhoGBc\include\Insumo.h"
 
 using namespace std;
 
