@@ -127,7 +127,7 @@ Confeitaria::~Confeitaria(){}
 /// MÉTODOS
 void Confeitaria::consultaProduto(int idEscolhido){
 
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
+    for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
 
         if(idEscolhido == (*itP)->getIdProduto()){
 
@@ -147,7 +147,7 @@ void Confeitaria::consultaProduto(int idEscolhido){
 }
 void Confeitaria::consultaProduto(string nomeEscolhido){
 
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
+    for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
 
         if(nomeEscolhido == (*itP)->getNome()){
 
@@ -168,7 +168,7 @@ void Confeitaria::consultaProduto(string nomeEscolhido){
 
 void Confeitaria::consultaInsumo(int idEscolhido){
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
+    for(vector<Insumo*>::iterator itI = this->lstInsumos.begin(); itI != this->lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
 
         if(idEscolhido == (*itI)->getIdInsumo()){
 
@@ -186,7 +186,7 @@ void Confeitaria::consultaInsumo(int idEscolhido){
 }
 void Confeitaria::consultaInsumo(string nomeEscolhido){
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
+    for(vector<Insumo*>::iterator itI = this->lstInsumos.begin(); itI != this->lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
 
         if(nomeEscolhido == (*itI)->getNome()){
 
@@ -203,11 +203,24 @@ void Confeitaria::consultaInsumo(string nomeEscolhido){
 
 }
 
+void Confeitaria::listarVendas(){
+
+    cout << "Produto" << '\t' << "Quantidade vendida" << endl;
+
+    for(vector<Venda*>::iterator itV = this->lstVendas.begin(); itV != this->lstVendas.end(); itV++){
+
+        cout << "---" << (*itV)->getNomeProduto();
+        cout << '\t' << (*itV)->getQuantidade() << endl;
+
+    }
+
+}
+
 void Confeitaria::listarProdutos(){
 
     cout << "IdProduto" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "QuantMinEstoque" << endl;
 
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
+    for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
         cout << (*itP)->getIdProduto();
         cout << '\t' << (*itP)->getNome();
         cout << '\t' << (*itP)->getValor();
@@ -224,13 +237,58 @@ void Confeitaria::listarInsumos(){
 
     cout << "IdInsumo" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "quantMinEstoque" << endl;
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
+    for(vector<Insumo*>::iterator itI = this->lstInsumos.begin(); itI != this->lstInsumos.end(); itI++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
         cout << (*itI)->getIdInsumo();
         cout << '\t' << (*itI)->getNome();
         cout << '\t' << (*itI)->getValor();
         cout << '\t' << (*itI)->getUnidadeMedida();
         cout << '\t' << (*itI)->getQuantEstoque();
         cout << '\t' << (*itI)->getQuantMinEstoque() << endl;
+    }
+
+}
+
+void Confeitaria::venderProdutos(){
+
+    string nomeEscolhido;
+    float quantidade;
+
+    while(1){ // ABRE O LAÇO PARA A RECEPÇÃO DE PRODUTOS
+
+        fflush(stdin);
+        cout << "\nDigite o nome do produto a ser vendido: ";
+        getline(cin, nomeEscolhido);
+        fflush(stdin);
+        cout << "Digite a quantidade a ser vendida: ";
+        cin >> quantidade;
+
+        if(quantidade > 0){
+
+            for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // LAÇO PARA BUSCAR O PRODUTO NA LISTA DE PRODUTOS DA CONFEITARIA
+
+                if(nomeEscolhido == (*itP)->getNome()){
+
+                    if((*itP)->vender(quantidade)){ // REALIZA A VENDA CASO A HAJA PRODUTO SUFICIENTE PARA O PEDIDO
+
+                        Venda *ponteiroVenda = new Venda(*itP, quantidade);
+
+                        this->lstVendas.push_back(ponteiroVenda); // SALVA NA LISTA A QUANTIDADE DE VENDAS
+
+                    }
+
+                }
+
+            }
+
+        }
+        else{ // FECHA O LAÇO E ENCERRA A LISTA DE VENDA
+
+            cout << "\nLista de vendas encerrada!" << endl;
+            break;
+
+        }
+
+
     }
 
 }

@@ -54,4 +54,21 @@ void Produto::listaInsumos(){
 
 void Produto::produzir(){}
 
-void Produto::vender(){}
+bool Produto::vender(float quantidade){
+
+    if(this->quantEstoque - quantidade < 0){ // VERIFICA SE HÁ PRODUTOS SUFICIENTES PARA ALGUM PEDIDO...
+
+        cout << "QUANTIDADE INSUFICIENTE! CANCELANDO PEDIDO!" << endl; // ... SE NÃO, CANCELA O PEDIDO E NÃO COMPUTA A VENDA
+
+        return false;
+
+    }
+    else{
+
+        this->quantEstoque -= quantidade; // ... SE SIM, COMPUTA A VENDA E DA BAIXA DE PRODUTOS NO SISTEMA
+
+        return true;
+
+    }
+
+}
