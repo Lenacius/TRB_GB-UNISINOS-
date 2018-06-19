@@ -9,7 +9,7 @@
 
 #include "Produto.h"
 #include "Insumo.h"
-//#include "Venda.h"
+#include "Venda.h"
 
 using namespace std;
 
@@ -19,7 +19,7 @@ class Confeitaria{
         /// ATRIBUTOS
         vector<Produto*> lstProdutos;
         vector<Insumo*> lstInsumos;
-        //vector<Venda*> lstVendas;
+        vector<Venda*> lstVendas;
 
     public:
         /// CONSTRUTOR
@@ -35,8 +35,12 @@ class Confeitaria{
         void consultaInsumo(int idEscolhido);
         void consultaInsumo(string nomeEscolhido);
 
+        void listarVendas();
+
         void listarProdutos();
         void listarInsumos();
+
+        void venderProdutos();
 
 };
 
