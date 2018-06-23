@@ -7,6 +7,8 @@
 #include <iterator>
 #include <fstream>
 
+//#include "C:\Users\jonas\Desktop\TrabalhoGBc\include\Confeitaria.h"
+
 using namespace std;
 
 class Insumo{
@@ -20,6 +22,7 @@ class Insumo{
         float quantEstoque;
         float quantMinEstoque;
 
+        float entradaInsumo;
     public:
         /// CONSTRUTOR
         Insumo();
@@ -43,8 +46,9 @@ class Insumo{
         void setQuantEstoque(float quantEstoque);
         void setQuantMinEstoque(float quantMinEstoque);
 
+
         /// MÉTODOS
-        void inserirEstoque();
+        void inserirEstoque(float entradaInsumo);
         void removerEstoque();
 };
 

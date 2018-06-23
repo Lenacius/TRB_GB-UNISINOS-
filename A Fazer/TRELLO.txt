@@ -1,0 +1,14 @@
+**método para armazenar valores da diferença entre quantEstoque e quatMinEstoque [FEITO]
+##arrumar erro nos valores adicionados para alguns insumos (5, 10, 12, 15) [FEITO]
+
+***criar método para armazenar valores personalizados (imputados pelo usuário) para cada insumo com quantidade abaixo [FEITO]
+##ARRUMAR IF (quantAAdicionar > dif || quantAAdicionar == dif) = adiciona valor no estoque do insumo 
+-- TENTEI COM: quantAAdicionar >= dif MAS NÃO DEU!
+-- TAMBÉM TENTEI COM if(quantAAdicionar < dif) = mensagem erro, mas não deu. [A FAZER]
+##FIZ COM WHILE E PRA PROTUDOS (TUDO INT) FUNCIONA, PRA INSUMO BUGA
+
+****criar método que salva a quantidade de estoque atual no arquivo Insumos.txt [A FAZER]
+
+*****Criar método para remoção de estoque dos insumos que são usados para fazer os produtos
+*sugestão: fazer a dif ou estoqueAAdicionar * -1 ...
+

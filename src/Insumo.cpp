@@ -1,4 +1,5 @@
-#include "Insumo.h"
+//#include "Insumo.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGBc\include\Insumo.h"
 
 /// CONSTRUTOR
 Insumo::Insumo(){}
@@ -33,5 +34,8 @@ void Insumo::setQuantEstoque(float quantEstoque){ this->quantEstoque = quantEsto
 void Insumo::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = quantMinEstoque; }
 
 /// MÉTODOS
-void Insumo::inserirEstoque(){}
+
+void Insumo::inserirEstoque(float entradaInsumo){
+   //CRIAR MÉTODO PARA SALVAR O ESTOQUE NO ARQUIVO INSUMOS.TXT
+}
 void Insumo::removerEstoque(){}
