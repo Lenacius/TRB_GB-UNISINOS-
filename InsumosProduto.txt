@@ -23,7 +23,7 @@ Bolo neutro	Acucar cristal	0.3
 Bolo neutro	Leite	0.2
 Bolo neutro	Ovo	2
 Bolo neutro	Fermento quimico	0.04
-Bolo neutro	Mateiga	0.1
+Bolo neutro	Manteiga	0.1
 Bolo de chocolate	Farinha de trigo	0.4
 Bolo de chocolate	Sal	0.03
 Bolo de chocolate	Acucar cristal	0.3
