@@ -36,8 +36,8 @@ class Confeitaria{
         void consultaInsumo(int idEscolhido);
         void consultaInsumo(string nomeEscolhido);
 
-        void insumosAProduzir();
-        void produtosAProduzir();
+        void atualizarInsumos();
+        void atualizarProdutos();
 
         void listarProdutos();
         void listarInsumos();

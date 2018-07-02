@@ -1,4 +1,5 @@
-#include "InsumosProduto.h"
+//#include "InsumosProduto.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGBc1\include\InsumosProduto.h"
 
 /// CONSTRUTOR
 InsumosProduto::InsumosProduto(){}
@@ -18,3 +19,4 @@ float InsumosProduto::getQuantidade(){ return this->quantidade; }
 string InsumosProduto::getNomeInsumo(){ return this->insumo->getNome(); }
 
 void InsumosProduto::setQuantidade(float quantidade){ this->quantidade = quantidade; }
+string InsumosProduto::getUnidadeMedida(){ return this->insumo->getUnidadeMedida(); }

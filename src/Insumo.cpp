@@ -1,5 +1,5 @@
 //#include "Insumo.h"
-#include "C:\Users\jonas\Desktop\TrabalhoGBc\include\Insumo.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGBc1\include\Insumo.h"
 
 /// CONSTRUTOR
 Insumo::Insumo(){}
@@ -35,7 +35,42 @@ void Insumo::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = 
 
 /// MÉTODOS
 
-void Insumo::inserirEstoque(float entradaInsumo){
-   //CRIAR MÉTODO PARA SALVAR O ESTOQUE NO ARQUIVO INSUMOS.TXT
+void Insumo::inserirEstoque(int opcao)
+{
+
+    if(opcao == 1) // ADICIONA APENAS AS QUANTIDADES QUE FALTAM
+    {
+        this->setQuantEstoque(this->getQuantMinEstoque());
+    }
+    if(opcao == 2)
+    {
+        if(this->getQuantEstoque() < this->getQuantMinEstoque()) // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+            {
+                float dif = 0, quantAAdicionar = 0;
+
+                dif = this->getQuantMinEstoque() - this->getQuantEstoque();
+
+                cout << endl << "Dados do insumo:" ;
+                cout << "\nID: " << "\t\t\t" << this->getIdInsumo()
+                     << "\nNome: " << "\t\t\t" << this->getNome()
+                     << "\nValor: " << "\t\t\t" << "R$" << this->getValor()
+                     << "\nUnidadeMedida: " << "\t\t" << this->getUnidadeMedida()
+                     << "\nQuantEstoque: " << "\t\t" << this->getQuantEstoque()
+                     << "\nQuantMinEstoque: " << "\t" << this->getQuantMinEstoque()
+                     << "\n\nInsira a quantidade que deseja adicionar:\n*O minimo para este insumo eh " << dif << '!' << endl << "Quantidade desejada: ";
+                cin >> quantAAdicionar;
+                while(quantAAdicionar < dif)
+                {
+                    cout << "\nERRO: A quantidade desejada deve ser maior que a minima! Por favor, tente novamente: "
+                         << "\n*O minimo para este produto eh " << dif << '!' << endl << "Quantidade desejada: ";
+                    cin >> quantAAdicionar;
+                }
+                this->setQuantEstoque(quantAAdicionar + this->getQuantEstoque());
+                dif = 0;
+            }
+    }
 }
-void Insumo::removerEstoque(){}
+void Insumo::removerEstoque(){
+
+
+}

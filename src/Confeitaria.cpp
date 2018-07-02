@@ -1,5 +1,5 @@
 //#include "Confeitaria.h"
-#include "C:\Users\jonas\Desktop\TrabalhoGBc\include\Confeitaria.h"
+#include "C:\Users\jonas\Desktop\TrabalhoGBc1\include\Confeitaria.h"
 
 /// CONSTRUTOR
 Confeitaria::Confeitaria(){
@@ -208,16 +208,17 @@ void Confeitaria::consultaInsumo(string nomeEscolhido){
 
 }
 
-void Confeitaria::insumosAProduzir(){
+void Confeitaria::atualizarInsumos()
+{
     char opSN;
-    int op12, cont = 0;
+    int opcao, cont = 0;
 
     cout << "==================================================================================================" << endl;
     cout << "-----LISTA DE INSUMOS A PRODUZIR-----" << endl;
 
     for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
     {
-        if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+        if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO PARA MOSTRAR INSUMOS COM ESTOQUE MENOR QUE MINIMO
         {
             cout << "ID: " << "\t\t\t" <<(*itI)->getIdInsumo()
                  << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
@@ -234,81 +235,48 @@ void Confeitaria::insumosAProduzir(){
         cout << "Deseja comprar os insumos que faltam (s/n)? ";
         cin >> opSN;
 
-        if(opSN == 's' || opSN == 'S') //ESSAS OPÕES APENAS SUBSTITUEM OS VALORES DE quantEstoque DO INSUMO NA MEMÓRIA, NÃO SALVA NO ARQUIVO TXT!!!
+        if(opSN == 's' || opSN == 'S')
         {
             cout << "1- Para adicionar apenas as quantidades que faltam.\n2- Para adicionar quantidades personalizadas\nOpcao escolhida: ";
-            cin >> op12;
+            cin >> opcao;
 
             system("cls");
 
-            if(op12 == 1)
-            {
-                cout << "Opcao escolhida: 1- Adicionar apenas as quantidades que faltam\n";
-                for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++) // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
+            //Insumo insumo;
+            //insumo.inserirEstoque(opcao); --NÃO CONSEGUI FAZER ASSIM
+
+
+            if(opcao == 1){
+                for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
                 {
-                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque()) // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
                     {
-                        float dif = 0, varX = 0;
-
-                        dif = (*itI)->getQuantMinEstoque() - (*itI)->getQuantEstoque();
-                        varX = dif + (*itI)->getQuantEstoque();
-
-                        (*itI)->setQuantEstoque(varX);
-                        //(*itI)->inserirEstoque(varX); // PARA SALVAR NO ARQUIVO INSUMO.TXT DEVE SER CRIADO O MÉTODO inserirEstoque
-                        varX = 0;
-                        dif = 0;
+                        (*itI)->inserirEstoque(1);
                     }
                 }
-                cout << "Quantidades faltantes adicionadas com sucesso! \n";
             }
-            if(op12 == 2)
-            {
-                cout << "Opcao escolhida: 2- Adicionar quantidades personalizadas\n";
-                for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++) // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
+            if(opcao == 2){
+                for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
                 {
-                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque()) // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
                     {
-                        float dif = 0, varX = 0, quantAAdicionar = 0;
-
-                        dif = (*itI)->getQuantMinEstoque() - (*itI)->getQuantEstoque();
-
-                        cout << endl << "Dados do insumo:" ;
-                        cout << "\nID: " << "\t\t\t" <<(*itI)->getIdInsumo()
-                             << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
-                             << "\nValor: " << "\t\t\t" << "R$" << (*itI)->getValor()
-                             << "\nUnidadeMedida: " << "\t\t" << (*itI)->getUnidadeMedida()
-                             << "\nQuantEstoque: " << "\t\t" << (*itI)->getQuantEstoque()
-                             << "\nQuantMinEstoque: " << "\t" << (*itI)->getQuantMinEstoque()
-                             << "\n\nInsira a quantidade que deseja adicionar:\n*O minimo para este insumo eh " << dif << '!' << endl << "Quantidade desejada: ";
-                        cin >> quantAAdicionar;
-                        while(quantAAdicionar < dif)
-                        {
-                            cout << "\nERRO: A quantidade desejada deve ser maior que a minima! Por favor, tente novamente: "
-                                 << "\n*O minimo para este produto eh " << dif << '!' << endl << "Quantidade desejada: ";
-                            cin >> quantAAdicionar;
-                        }
-                        varX = quantAAdicionar + (*itI)->getQuantEstoque();
-                        (*itI)->setQuantEstoque(varX);
-                        //(*itI)->inserirEstoque(dif); // PARA SALVAR NO ARQUIVO PRODUTO.TXT DEVE SER CRIADO O MÉTODO inserirEstoque
-                        varX = 0;
-                        dif = 0;
+                        (*itI)->inserirEstoque(2);
                     }
                 }
             }
         }
     }
 }
-
-void Confeitaria::produtosAProduzir(){
+void Confeitaria::atualizarProdutos(){
     char opSN;
-    int op12, cont = 0;
+    int opcao, cont = 0;
 
     cout << "==================================================================================================" << endl;
     cout << "\n-----LISTA DE PRODUTOS A PRODUZIR-----\n";
 
     for(vector<Produto*>::iterator itI = lstProdutos.begin(); itI != lstProdutos.end(); itI++)  // LÊ LISTA DE PRODUTOS DO INÍCIO AO FIM
     {
-        if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+        if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO PARA MOSTRAR PRODUTOS COM ESTOQUE MENOR QUE MÍNIMO
         {
             cout << "\nID: " << "\t\t\t" <<(*itI)->getIdProduto()
                  << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
@@ -329,62 +297,27 @@ void Confeitaria::produtosAProduzir(){
         if(opSN == 's' || opSN == 'S') //ESSAS OPÕES APENAS SUBSTITUEM OS VALORES DE quantEstoque DO INSUMO NA MEMÓRIA, NÃO SALVA NO ARQUIVO TXT!!!
         {
             cout << "1- Para adicionar apenas as quantidades que faltam.\n2- Para adicionar quantidades personalizadas\nOpcao escolhida: ";
-            cin >> op12;
+            cin >> opcao;
 
             system("cls");
 
-            if(op12 == 1)
+            if(opcao == 1)
             {
-                cout << "Opcao escolhida: 1- Adicionar apenas as quantidades que faltam\n";
-                for(vector<Produto*>::iterator itI = lstProdutos.begin(); itI != lstProdutos.end(); itI++) // LÊ LISTA DE PRODUTOS DO INÍCIO AO FIM
+                for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
                 {
-                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque()) // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+                    if((*itP)->getQuantEstoque() < (*itP)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
                     {
-                        float dif = 0, varX = 0;
-
-                        dif = (*itI)->getQuantMinEstoque() - (*itI)->getQuantEstoque();
-                        varX = dif + (*itI)->getQuantEstoque();
-
-                        (*itI)->setQuantEstoque(varX);
-                        //(*itI)->inserirEstoque(varX); // PARA SALVAR NO ARQUIVO PRODUTO.TXT DEVE SER CRIADO O MÉTODO inserirEstoque
-                        varX = 0;
-                        dif = 0;
+                         (*itP)->produzir(1);
                     }
                 }
-                cout << "Quantidades faltantes adicionadas com sucesso! \n";
             }
-            if(op12 == 2)
+            if(opcao == 2)
             {
-                cout << "Opcao escolhida: 2- Adicionar quantidades personalizadas\n";
-                for(vector<Produto*>::iterator itI = lstProdutos.begin(); itI != lstProdutos.end(); itI++) // LÊ LISTA DE PRODUTOS DO INÍCIO AO FIM
+                for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
                 {
-                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque()) // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+                    if((*itP)->getQuantEstoque() < (*itP)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
                     {
-                        float dif = 0, varX = 0, quantAAdicionar = 0;
-
-                        dif = (*itI)->getQuantMinEstoque() - (*itI)->getQuantEstoque();
-
-                        cout << endl << "Dados do produto:" ;
-                        cout << "\nID: " << "\t\t\t" <<(*itI)->getIdProduto()
-                             << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
-                             << "\nValor: " << "\t\t\t" << "R$" << (*itI)->getValor()
-                             << "\nUnidadeMedida: " << "\t\t" << (*itI)->getUnidadeMedida()
-                             << "\nQuantEstoque: " << "\t\t" << (*itI)->getQuantEstoque()
-                             << "\nQuantMinEstoque: " << "\t" << (*itI)->getQuantMinEstoque()
-                             << "\n\nInsira a quantidade que deseja adicionar:\n*O minimo para este produto eh " << dif << '!' << endl << "Quantidade desejada: ";
-                        cin >> quantAAdicionar;
-
-                        while(quantAAdicionar < dif)
-                        {
-                            cout << "\nERRO: A quantidade desejada deve ser maior que a minima! Por favor, tente novamente: "
-                                 << "\n*O minimo para este produto eh " << dif << '!' << endl << "Quantidade desejada: ";
-                            cin >> quantAAdicionar;
-                        }
-                        varX = quantAAdicionar + (*itI)->getQuantEstoque();
-                        (*itI)->setQuantEstoque(varX);
-                        //(*itI)->inserirEstoque(dif); // PARA SALVAR NO ARQUIVO PRODUTO.TXT DEVE SER CRIADO O MÉTODO inserirEstoque
-                        varX = 0;
-                        dif = 0;
+                        (*itP)->produzir(2);
                     }
                 }
             }

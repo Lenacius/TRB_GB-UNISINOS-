@@ -48,11 +48,9 @@ class Produto{
 
         /// MÉTODOS
         void leInsumosProduto(Insumo *insumo, float quantidade);
-
         void listaInsumos();
-
-        void produzir();
-        bool vender(float quantidade);
+        void produzir(int opcao);
+        void vender();
 
 };
 
