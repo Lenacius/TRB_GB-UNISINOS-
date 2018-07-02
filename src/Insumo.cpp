@@ -55,6 +55,14 @@ void Insumo::inserirEstoque(int opcao){
                      << "\nQuantMinEstoque: " << "\t" << this->getQuantMinEstoque()
                      << "\n\nInsira a quantidade que deseja adicionar:\n*O minimo para este insumo eh " << dif << '!' << endl << "Quantidade desejada: ";
                 cin >> quantAAdicionar;
+				
+				while(cin.fail()){//VERIFICA SE O USUARIO NAO DIGITOU UM VALOR NUMERICO, CASO CASO NAO O TENHA FEITO ELE PEDE PARA REPETIR
+                    cout << "ERRO! VOCE NAO DIGITOU UM VALOR NUMERICO. TENTE NOVAMENTE: " << endl;
+                    cin.clear();
+                    cin.ignore(256,'\n');
+                    cin >> quantAAdicionar;
+                }
+				
                 while(quantAAdicionar < dif)
                 {
                     cout << "\nERRO: A quantidade desejada deve ser maior que a minima! Por favor, tente novamente: "
