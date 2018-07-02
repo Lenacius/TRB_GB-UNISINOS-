@@ -7,8 +7,7 @@
 #include <iterator>
 #include <fstream>
 
-//#include <Insumo.h>
-#include "C:\Users\jonas\Desktop\TrabalhoGBc1\include\Insumo.h"
+#include <Insumo.h>
 
 using namespace std;
 
@@ -23,7 +22,6 @@ class InsumosProduto{
         /// CONSTRUTOR
         InsumosProduto();
         InsumosProduto(Insumo *insumo, float quantidade);
-        string getUnidadeMedida();
 
         /// DESTRUTOR
         virtual ~InsumosProduto();
@@ -31,8 +29,11 @@ class InsumosProduto{
         /// SETTERS_&_GETTERS
         float getQuantidade();
         string getNomeInsumo();
+        Insumo* getInsumo();
 
         void setQuantidade(float quantidade);
+
+
 };
 
 #endif // INSUMOSPRODUTO_H

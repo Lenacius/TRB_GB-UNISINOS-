@@ -6,6 +6,7 @@
 #include <vector>
 #include <iterator>
 #include <fstream>
+#include <cstdlib>
 
 #include "InsumosProduto.h"
 
@@ -48,9 +49,11 @@ class Produto{
 
         /// MÉTODOS
         void leInsumosProduto(Insumo *insumo, float quantidade);
+
         void listaInsumos();
+
         void produzir(int opcao);
-        void vender();
+        bool vender(float quantidade);
 
 };
 
