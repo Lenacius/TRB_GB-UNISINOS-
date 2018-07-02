@@ -105,6 +105,14 @@ int main(){
                     fflush(stdin);
                     cout << "Digite o ID do insumo desejado: ";
                     cin >> id;
+
+                while(cin.fail()){ //VERIFICA SE USUARIO DIGIOU UM ID INTEIRO, CASO TENHA SIDO CHAR ELE PEDE PARA REPETIR
+                    cout << "ERRO! VOCE NAO DIGITOU UM INTEIRO. TENTE NOVAMENTE: " << endl;
+                    cin.clear();
+                    cin.ignore(256,'\n');
+                    cin >> id;
+                }
+
                     sonho->consultaInsumo(id);
                     break;
                 }
