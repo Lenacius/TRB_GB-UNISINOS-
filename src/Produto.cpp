@@ -1,5 +1,4 @@
-//#include "Produto.h"
-#include "C:\Users\jonas\Desktop\TrabalhoGBc1\include\Produto.h"
+#include "Produto.h"
 
 /// CONSTRUTOR
 Produto::Produto(){}
@@ -47,29 +46,44 @@ void Produto::listaInsumos(){
     for(vector<InsumosProduto*>::iterator itIP = this->lstInsumos.begin(); itIP != this->lstInsumos.end(); itIP++){ // LAÇO PARA LISTAR OS INSUMOS DE UM PRODUTO
 
         cout << "---" << (*itIP)->getNomeInsumo() << '\t';
-        cout << (*itIP)->getQuantidade() << '(' << (*itIP)->getUnidadeMedida() << ')' << endl;
+        cout << (*itIP)->getQuantidade() << endl;
 
     }
 
 }
 
-void Produto::produzir(int opcao)
-{
-    Insumo insumo;
+void Produto::produzir(int opcao){
+    Insumo *insumo;
+    float quantInsumo = 0;
+    float dif = 0, quantAAdicionar = 0;
+    bool flag_falta = false;
 
-    if(opcao == 1)
-    {
-        this->setQuantEstoque(this->getQuantMinEstoque());
+    if(opcao == 1){
+
+        for(vector<InsumosProduto*>::iterator itIP = this->lstInsumos.begin(); itIP != this->lstInsumos.end(); itIP++){
+
+            insumo = (*itIP)->getInsumo(); // RECEBE O ENDEREÇO NA MEMÓRIA DO INSUMO A CONSUMIR NO PRODUTO
+            quantAAdicionar = this->quantMinEstoque - this->quantEstoque;
+
+            quantInsumo = quantAAdicionar * (*itIP)->getQuantidade();
+            flag_falta = insumo->removerEstoque(quantInsumo); // FLAG VERIFICADORA DE FALTA DE INSUMOS SUFICIENTES
+
+            if(flag_falta == true){
+                cout << "INSUMOS INSUFICIENTES! CANCELANDO ADD!" << endl;
+                //cout << insumo->getNome() << endl;
+                break;
+            }
+
+        }
+
     }
-    if(opcao == 2)
-    {
-        if(this->getQuantEstoque() < this->getQuantMinEstoque()) // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
-        {
-            float dif = 0, quantAAdicionar = 0;
+    else if(opcao == 2){
+
+        if(this->getQuantEstoque() < this->getQuantMinEstoque()){
 
             dif = this->getQuantMinEstoque() - this->getQuantEstoque();
 
-            cout << endl << "Dados do produto:" ;
+            cout << "\nDados do produto:" ;
             cout << "\nID: " << "\t\t\t" << this->getIdProduto()
                  << "\nNome: " << "\t\t\t" << this->getNome()
                  << "\nValor: " << "\t\t\t" << "R$" << this->getValor()
@@ -87,19 +101,43 @@ void Produto::produzir(int opcao)
             }
 
             for(vector<InsumosProduto*>::iterator itIP = this->lstInsumos.begin(); itIP != this->lstInsumos.end(); itIP++){ // LAÇO PARA LISTAR OS INSUMOS DE UM PRODUTO
-                (*itIP)->getNomeInsumo();
-                (*itIP)->getQuantidade();
-                // VERIFICAR SE O INSUMO TEM QUANTIDADE EM ESTOQUE DISPONÍVEL PARA PRODUZIR A QTD DESEJADA DO PRODUTO
-                // CRIAR MÉTODO QUE VERIFIQUE A QUANTIDADE EM ESTOQUE DO INSUMO
-                //insumo.removerEstoque(); --NÃO CONSEGUI CHAMAR O INSUMO CERTO
+
+                insumo = (*itIP)->getInsumo(); // RECEBE O ENDEREÇO NA MEMÓRIA DO INSUMO A CONSUMIR NO PRODUTO
+
+                quantInsumo = quantAAdicionar * (*itIP)->getQuantidade();
+                flag_falta = insumo->removerEstoque(quantInsumo); // FLAG VERIFICADORA DE FALTA DE INSUMOS SUFICIENTES
+
+                if(flag_falta == true){
+                    cout << "INSUMOS INSUFICIENTES! CANCELANDO ADD!" << endl;
+                    //cout << insumo->getNome() << endl;
+                    break;
+                }
+
             }
 
-            this->setQuantEstoque(quantAAdicionar + this->getQuantEstoque());
-
-            dif = 0;
         }
+
     }
+
+    if(flag_falta == false) this->quantEstoque += quantAAdicionar;
+
 }
 
+bool Produto::vender(float quantidade){
 
-void Produto::vender(){}
+    if(this->quantEstoque - quantidade < 0){ // VERIFICA SE HÁ PRODUTOS SUFICIENTES PARA ALGUM PEDIDO...
+
+        cout << "QUANTIDADE INSUFICIENTE! CANCELANDO PEDIDO!" << endl; // ... SE NÃO, CANCELA O PEDIDO E NÃO COMPUTA A VENDA
+
+        return false;
+
+    }
+    else{
+
+        this->quantEstoque -= quantidade; // ... SE SIM, COMPUTA A VENDA E DA BAIXA DE PRODUTOS NO SISTEMA
+
+        return true;
+
+    }
+
+}

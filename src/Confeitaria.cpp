@@ -1,5 +1,4 @@
-//#include "Confeitaria.h"
-#include "C:\Users\jonas\Desktop\TrabalhoGBc1\include\Confeitaria.h"
+#include "Confeitaria.h"
 
 /// CONSTRUTOR
 Confeitaria::Confeitaria(){
@@ -126,23 +125,96 @@ Confeitaria::Confeitaria(){
 Confeitaria::~Confeitaria(){}
 
 /// MÉTODOS
+void Confeitaria::salvarConfeitaria(){
+
+    int conta = 0;
+    fstream file;
+
+    file.open("Produtos.txt", fstream::out);
+
+    if(file.is_open()){
+
+        file << "idProduto" << '\t' << "nome" << '\t' << "valor" << '\t' << "unidadeMedida" << '\t' << "quantEstoque" << '\t' << "quantMinEstoque" << '\n';
+
+        for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){
+
+            if(conta == this->lstProdutos.size() - 1){
+                file << (*itP)->getIdProduto() << '\t'
+                << (*itP)->getNome() << '\t'
+                << (*itP)->getValor() << '\t'
+                << (*itP)->getUnidadeMedida() << '\t'
+                << (*itP)->getQuantEstoque() << '\t'
+                << (*itP)->getQuantMinEstoque();
+            }
+            else{
+                file << (*itP)->getIdProduto() << '\t'
+                << (*itP)->getNome() << '\t'
+                << (*itP)->getValor() << '\t'
+                << (*itP)->getUnidadeMedida() << '\t'
+                << (*itP)->getQuantEstoque() << '\t'
+                << (*itP)->getQuantMinEstoque() << '\n';
+            }
+
+            conta++;
+
+        }
+
+        file.close();
+
+    }
+    else cout << "ERRO! FALHA AO ABRIR O ARQUIVO!" << endl;
+
+    conta = 0;
+    file.open("Insumos.txt", fstream::out);
+
+    if(file.is_open()){
+
+        file << "idInsumo" << '\t' << "nome" << '\t' << "valor" << '\t' << "unidadeMedida" << '\t' << "quantEstoque" << '\t' << "quantMinEstoque" << '\n';
+
+        for(vector<Insumo*>::iterator itI = this->lstInsumos.begin(); itI != this->lstInsumos.end(); itI++){
+
+            if(conta == this->lstInsumos.size() - 1){
+                file << (*itI)->getIdInsumo() << '\t'
+                << (*itI)->getNome() << '\t'
+                << (*itI)->getValor() << '\t'
+                << (*itI)->getUnidadeMedida() << '\t'
+                << (*itI)->getQuantEstoque() << '\t'
+                << (*itI)->getQuantMinEstoque();
+            }
+            else{
+                file << (*itI)->getIdInsumo() << '\t'
+                << (*itI)->getNome() << '\t'
+                << (*itI)->getValor() << '\t'
+                << (*itI)->getUnidadeMedida() << '\t'
+                << (*itI)->getQuantEstoque() << '\t'
+                << (*itI)->getQuantMinEstoque() << '\n';
+            }
+
+            conta++;
+
+        }
+
+        file.close();
+
+    }
+    else cout << "ERRO! FALHA AO ABRIR O ARQUIVO!" << endl;
+
+}
+
 void Confeitaria::consultaProduto(int idEscolhido){
 
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
+    for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
 
         if(idEscolhido == (*itP)->getIdProduto()){
 
-            cout << "==================================================================================================" << endl;
-            cout << "-----CONSULTA PRODUTO-----" << endl;
             cout << "ID: " << "\t\t\t" << (*itP)->getIdProduto()
             << "\nNome: " << "\t\t\t" << (*itP)->getNome()
-            << "\nValor: " << "\t\t\t" << "R$" << (*itP)->getValor()
+            << "\nValor: " << "\t\t\t" << (*itP)->getValor()
             << "\nUnidadeMedida: " << "\t\t" << (*itP)->getUnidadeMedida()
             << "\nQuantEstoque: " << "\t\t" << (*itP)->getQuantEstoque()
             << "\nQuantMinEstoque: " << "\t" << (*itP)->getQuantMinEstoque() << endl;
             cout << "\nInsumos necessarios para produzi-lo:" << endl;
             (*itP)->listaInsumos();
-            cout << "==================================================================================================" << endl;
 
         }
 
@@ -151,14 +223,13 @@ void Confeitaria::consultaProduto(int idEscolhido){
 }
 void Confeitaria::consultaProduto(string nomeEscolhido){
 
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
-        cout << "==================================================================================================" << endl;
-        cout << "-----CONSULTA PRODUTO-----" << endl;
+    for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // LAÇO PARA PROCURA DO PRODUTO ESCOLHIDO
+
         if(nomeEscolhido == (*itP)->getNome()){
 
             cout << "ID: " << "\t\t\t" << (*itP)->getIdProduto()
             << "\nNome: " << "\t\t\t" << (*itP)->getNome()
-            << "\nValor: " << "\t\t\t" << "R$" << (*itP)->getValor()
+            << "\nValor: " << "\t\t\t" << (*itP)->getValor()
             << "\nUnidadeMedida: " << "\t\t" << (*itP)->getUnidadeMedida()
             << "\nQuantEstoque: " << "\t\t" << (*itP)->getQuantEstoque()
             << "\nQuantMinEstoque: " << "\t" << (*itP)->getQuantMinEstoque() << endl;
@@ -173,13 +244,13 @@ void Confeitaria::consultaProduto(string nomeEscolhido){
 
 void Confeitaria::consultaInsumo(int idEscolhido){
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
+    for(vector<Insumo*>::iterator itI = this->lstInsumos.begin(); itI != this->lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
 
         if(idEscolhido == (*itI)->getIdInsumo()){
 
             cout << "ID: " << "\t\t\t" <<(*itI)->getIdInsumo()
             << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
-            << "\nValor: " << "\t\t\t" << "R$" << (*itI)->getValor()
+            << "\nValor: " << "\t\t\t" << (*itI)->getValor()
             << "\nUnidadeMedida: " << "\t\t" << (*itI)->getUnidadeMedida()
             << "\nQuantEstoque: " << "\t\t" << (*itI)->getQuantEstoque()
             << "\nQuantMinEstoque: " << "\t" << (*itI)->getQuantMinEstoque() << endl;
@@ -191,13 +262,13 @@ void Confeitaria::consultaInsumo(int idEscolhido){
 }
 void Confeitaria::consultaInsumo(string nomeEscolhido){
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
+    for(vector<Insumo*>::iterator itI = this->lstInsumos.begin(); itI != this->lstInsumos.end(); itI++){ // LAÇO PARA PROCURA DO INSUMO ESCOLHIDO
 
         if(nomeEscolhido == (*itI)->getNome()){
 
             cout << "ID: " << "\t\t\t" <<(*itI)->getIdInsumo()
             << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
-            << "\nValor: " << "\t\t\t" << "R$" << (*itI)->getValor()
+            << "\nValor: " << "\t\t\t" << (*itI)->getValor()
             << "\nUnidadeMedida: " << "\t\t" << (*itI)->getUnidadeMedida()
             << "\nQuantEstoque: " << "\t\t" << (*itI)->getQuantEstoque()
             << "\nQuantMinEstoque: " << "\t" << (*itI)->getQuantMinEstoque() << endl;
@@ -208,65 +279,53 @@ void Confeitaria::consultaInsumo(string nomeEscolhido){
 
 }
 
-void Confeitaria::atualizarInsumos()
-{
-    char opSN;
-    int opcao, cont = 0;
+void Confeitaria::listarVendas(){
 
-    cout << "==================================================================================================" << endl;
-    cout << "-----LISTA DE INSUMOS A PRODUZIR-----" << endl;
+    cout << "Produto" << '\t' << "Quantidade vendida" << endl;
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
-    {
-        if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO PARA MOSTRAR INSUMOS COM ESTOQUE MENOR QUE MINIMO
-        {
-            cout << "ID: " << "\t\t\t" <<(*itI)->getIdInsumo()
-                 << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
-                 << "\nValor: " << "\t\t\t" << "R$" << (*itI)->getValor()
-                 << "\nUnidadeMedida: " << "\t\t" << (*itI)->getUnidadeMedida()
-                 << "\nQuantEstoque: " << "\t\t" << (*itI)->getQuantEstoque()
-                 << "\nQuantMinEstoque: " << "\t" << (*itI)->getQuantMinEstoque() << endl << endl;
-            cont++;
-        }
+    for(vector<Venda*>::iterator itV = this->lstVendas.begin(); itV != this->lstVendas.end(); itV++){
+
+        cout << "---" << (*itV)->getNomeProduto();
+        cout << '\t' << (*itV)->getQuantidade() << endl;
+
     }
-    cout << "==================================================================================================" << endl;
-    if(cont != 0) // VERIFICA SE A LISTAGEM ESTÁ VAZIA
-    {
-        cout << "Deseja comprar os insumos que faltam (s/n)? ";
-        cin >> opSN;
 
-        if(opSN == 's' || opSN == 'S')
-        {
-            cout << "1- Para adicionar apenas as quantidades que faltam.\n2- Para adicionar quantidades personalizadas\nOpcao escolhida: ";
-            cin >> opcao;
+    cout << endl;
 
-            system("cls");
-
-            //Insumo insumo;
-            //insumo.inserirEstoque(opcao); --NÃO CONSEGUI FAZER ASSIM
-
-
-            if(opcao == 1){
-                for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
-                {
-                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
-                    {
-                        (*itI)->inserirEstoque(1);
-                    }
-                }
-            }
-            if(opcao == 2){
-                for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
-                {
-                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
-                    {
-                        (*itI)->inserirEstoque(2);
-                    }
-                }
-            }
-        }
-    }
 }
+
+void Confeitaria::listarProdutos(){
+
+    cout << "IdProduto" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "QuantMinEstoque" << endl;
+
+    for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
+        cout << (*itP)->getIdProduto();
+        cout << '\t' << (*itP)->getNome();
+        cout << '\t' << (*itP)->getValor();
+        cout << '\t' << (*itP)->getUnidadeMedida();
+        cout << '\t' << (*itP)->getQuantEstoque();
+        cout << '\t' << (*itP)->getQuantMinEstoque() << endl;
+
+        //(*itP)->listaInsumos();
+    }
+
+}
+
+void Confeitaria::listarInsumos(){
+
+    cout << "IdInsumo" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "quantMinEstoque" << endl;
+
+    for(vector<Insumo*>::iterator itI = this->lstInsumos.begin(); itI != this->lstInsumos.end(); itI++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
+        cout << (*itI)->getIdInsumo();
+        cout << '\t' << (*itI)->getNome();
+        cout << '\t' << (*itI)->getValor();
+        cout << '\t' << (*itI)->getUnidadeMedida();
+        cout << '\t' << (*itI)->getQuantEstoque();
+        cout << '\t' << (*itI)->getQuantMinEstoque() << endl;
+    }
+
+}
+
 void Confeitaria::atualizarProdutos(){
     char opSN;
     int opcao, cont = 0;
@@ -301,56 +360,111 @@ void Confeitaria::atualizarProdutos(){
 
             system("cls");
 
-            if(opcao == 1)
-            {
-                for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
-                {
+            if(opcao == 1 || opcao == 2){
+                for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
                     if((*itP)->getQuantEstoque() < (*itP)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
-                    {
-                         (*itP)->produzir(1);
-                    }
-                }
-            }
-            if(opcao == 2)
-            {
-                for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++)  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
-                {
-                    if((*itP)->getQuantEstoque() < (*itP)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
-                    {
-                        (*itP)->produzir(2);
-                    }
+                         (*itP)->produzir(opcao);
                 }
             }
         }
     }
 }
 
+void Confeitaria::atualizarInsumos(){
+    char opSN;
+    int opcao, cont = 0;
 
-void Confeitaria::listarProdutos(){
+    cout << "==================================================================================================" << endl;
+    cout << "-----LISTA DE INSUMOS A PRODUZIR-----" << endl;
 
-    cout << "IdProduto" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "QuantMinEstoque" << endl;
-    for(vector<Produto*>::iterator itP = lstProdutos.begin(); itP != lstProdutos.end(); itP++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
-        cout << (*itP)->getIdProduto();
-        cout << '\t' << (*itP)->getNome();
-        cout << '\t' << (*itP)->getValor();
-        cout << '\t' << (*itP)->getUnidadeMedida();
-        cout << '\t' << (*itP)->getQuantEstoque();
-        cout << '\t' << (*itP)->getQuantMinEstoque() << endl;
+    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
 
-        //(*itP)->listaInsumos();
+        if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque()){  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO PARA MOSTRAR INSUMOS COM ESTOQUE MENOR QUE MINIMO
+            cout << "ID: " << "\t\t\t" <<(*itI)->getIdInsumo()
+                 << "\nNome: " << "\t\t\t" <<(*itI)->getNome()
+                 << "\nValor: " << "\t\t\t" << "R$" << (*itI)->getValor()
+                 << "\nUnidadeMedida: " << "\t\t" << (*itI)->getUnidadeMedida()
+                 << "\nQuantEstoque: " << "\t\t" << (*itI)->getQuantEstoque()
+                 << "\nQuantMinEstoque: " << "\t" << (*itI)->getQuantMinEstoque() << endl << endl;
+            cont++;
+        }
+
     }
+
+    cout << "==================================================================================================" << endl;
+
+    if(cont != 0){ // VERIFICA SE A LISTAGEM ESTÁ VAZIA
+
+        cout << "Deseja comprar os insumos que faltam (s/n)? ";
+        cin >> opSN;
+
+        if(opSN == 's' || opSN == 'S'){
+
+            cout << "1- Para adicionar apenas as quantidades que faltam.\n2- Para adicionar quantidades personalizadas\nOpcao escolhida: ";
+            cin >> opcao;
+
+            system("cls");
+
+            if(opcao == 1 || opcao == 2){  // LÊ LISTA DE INSUMOS DO INÍCIO AO FIM
+                for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){
+                    if((*itI)->getQuantEstoque() < (*itI)->getQuantMinEstoque())  // SE A QUANTIDADE MINIMA FOR MENOR QUE A ATUAL, ENTRA NO LAÇO
+                        (*itI)->inserirEstoque(opcao);
+                }
+            }
+            else cout << "ERRO! OPCAO INVÁLIDA!" << endl;
+
+        }
+
+    }
+
 }
 
-void Confeitaria::listarInsumos(){
+void Confeitaria::venderProdutos(){
 
-    cout << "IdInsumo" << '\t' << "Nome" << '\t' << "Valor" << '\t' << "UnidadeMedida" << '\t' << "QuantEstoque" << '\t' << "quantMinEstoque" << endl;
+    string nomeEscolhido;
+    float quantidade;
 
-    for(vector<Insumo*>::iterator itI = lstInsumos.begin(); itI != lstInsumos.end(); itI++){ // UTILIZA O ITERADOR PARA PEGAR APENAS DADOS DE CADA COMPONENTE DO VECTOR DE PRODUTOS
-        cout << (*itI)->getIdInsumo();
-        cout << '\t' << (*itI)->getNome();
-        cout << '\t' << (*itI)->getValor();
-        cout << '\t' << (*itI)->getUnidadeMedida();
-        cout << '\t' << (*itI)->getQuantEstoque();
-        cout << '\t' << (*itI)->getQuantMinEstoque() << endl;
+    while(1){ // ABRE O LAÇO PARA A RECEPÇÃO DE PRODUTOS
+
+        fflush(stdin);
+        cout << "\nDigite o nome do produto a ser vendido: ";
+        getline(cin, nomeEscolhido);
+        fflush(stdin);
+        cout << "Digite a quantidade a ser vendida: ";
+        cin >> quantidade;
+
+        if(quantidade > 0){
+
+            for(vector<Produto*>::iterator itP = this->lstProdutos.begin(); itP != this->lstProdutos.end(); itP++){ // LAÇO PARA BUSCAR O PRODUTO NA LISTA DE PRODUTOS DA CONFEITARIA
+
+                if(nomeEscolhido == (*itP)->getNome()){
+
+                    if((*itP)->vender(quantidade)){ // REALIZA A VENDA CASO A HAJA PRODUTO SUFICIENTE PARA O PEDIDO
+
+                        Venda *ponteiroVenda = new Venda(*itP, quantidade);
+
+                        this->saldo += (*itP)->getValor() * quantidade;
+
+                        this->lstVendas.push_back(ponteiroVenda); // SALVA NA LISTA A QUANTIDADE DE VENDAS
+
+                        //this->listarProdutos();
+
+                    }
+
+                }
+
+            }
+
+        }
+        else{ // FECHA O LAÇO E ENCERRA A LISTA DE VENDA
+
+            cout << "\nLista de vendas encerrada!" << endl;
+            break;
+
+        }
+
     }
+
+    //cout << "Receita da compra: " << this->saldo << endl;
+
 }

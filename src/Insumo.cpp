@@ -1,5 +1,4 @@
-//#include "Insumo.h"
-#include "C:\Users\jonas\Desktop\TrabalhoGBc1\include\Insumo.h"
+#include "Insumo.h"
 
 /// CONSTRUTOR
 Insumo::Insumo(){}
@@ -34,10 +33,7 @@ void Insumo::setQuantEstoque(float quantEstoque){ this->quantEstoque = quantEsto
 void Insumo::setQuantMinEstoque(float quantMinEstoque){ this->quantMinEstoque = quantMinEstoque; }
 
 /// MÉTODOS
-
-void Insumo::inserirEstoque(int opcao)
-{
-
+void Insumo::inserirEstoque(int opcao){
     if(opcao == 1) // ADICIONA APENAS AS QUANTIDADES QUE FALTAM
     {
         this->setQuantEstoque(this->getQuantMinEstoque());
@@ -70,7 +66,12 @@ void Insumo::inserirEstoque(int opcao)
             }
     }
 }
-void Insumo::removerEstoque(){
+bool Insumo::removerEstoque(float quantidade){
 
+    if(quantidade > this->quantEstoque) return true;
+    else{
+        this->quantEstoque -= quantidade;
+        return false;
+    }
 
 }
